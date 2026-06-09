@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Content Checklist — Client Intake Guide</title>
+  <style>
+    /* ─── Base ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:      #2C3E50;
+      --accent:     #CAA05C;
+      --accent-lt:  #F5ECD7;
+      --green:      #27AE60;
+      --green-lt:   #E9F7EF;
+      --red:        #E74C3C;
+      --red-lt:     #FDEDEB;
+      --blue:       #2980B9;
+      --blue-lt:    #EBF5FB;
+      --grey-bg:    #F8F9FA;
+      --grey-line:  #DEE2E6;
+      --text:       #2C2C2C;
+      --text-muted: #6C757D;
+      --white:      #FFFFFF;
+      --radius:     6px;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      background: #ECECEC;
+    }
+
+    /* ─── Page Shell ─────────────────────────────────────────────── */
+    .page {
+      width: 794px;          /* A4 width in px at 96dpi */
+      min-height: 1123px;
+      background: var(--white);
+      margin: 20px auto;
+      padding: 48px 52px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ─── Cover / Title ──────────────────────────────────────────── */
+    .cover {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+    }
+    .cover-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .cover h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .cover-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .cover-meta {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .cover-meta-item {
+      background: var(--grey-bg);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+    .cover-meta-item .label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .cover-meta-item .value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand);
+    }
+
+    /* ─── How-to-use Banner ──────────────────────────────────────── */
+    .how-to {
+      background: var(--blue-lt);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-bottom: 36px;
+    }
+    .how-to h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .how-to ol {
+      padding-left: 18px;
+      color: var(--text);
+    }
+    .how-to ol li {
+      margin-bottom: 4px;
+    }
+    .how-to .ref-example {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+      font-family: monospace;
+    }
+
+    /* ─── Section Header ─────────────────────────────────────────── */
+    .section-header {
+      background: var(--brand);
+      color: white;
+      padding: 12px 18px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-header .section-num {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .section-header .section-desc {
+      font-size: 11px;
+      opacity: 0.75;
+      margin-top: 1px;
+    }
+    .section-body {
+      border: 1px solid var(--grey-line);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 4px 0;
+    }
+
+    /* ─── Item Row ────────────────────────────────────────────────── */
+    .item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .item:last-child { border-bottom: none; }
+    .item-label {
+      padding: 14px 16px;
+      background: var(--grey-bg);
+      border-right: 1px solid var(--grey-line);
+    }
+    .item-label .item-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 3px;
+    }
+    .item-label .item-ref {
+      font-family: monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-lt);
+      padding: 1px 5px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    .item-label .item-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .item-label .item-locations {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 5px;
+      font-style: italic;
+    }
+    .item-input {
+      padding: 14px 16px;
+    }
+    .item-input .provide-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .input-line {
+      border: none;
+      border-bottom: 1.5px solid var(--grey-line);
+      width: 100%;
+      padding: 5px 0;
+      font-size: 13px;
+      color: var(--text);
+      background: transparent;
+      margin-bottom: 8px;
+      outline: none;
+    }
+    .input-line:focus { border-bottom-color: var(--accent); }
+    .input-area {
+      border: 1.5px solid var(--grey-line);
+      border-radius: var(--radius);
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: inherit;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .input-area:focus { border-color: var(--accent); }
+
+    /* ─── File Upload Box ─────────────────────────────────────────── */
+    .file-box {
+      border: 2px dashed var(--grey-line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      text-align: center;
+      background: var(--grey-bg);
+    }
+    .file-box .file-icon { font-size: 22px; margin-bottom: 4px; }
+    .file-box .file-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 3px;
+    }
+    .file-box .file-spec {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .file-box.required { border-color: var(--red); background: var(--red-lt); }
+    .file-box.required .file-label { color: var(--red); }
+
+    /* ─── Multi-column items ─────────────────────────────────────── */
+    .item-input .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .item-input .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* ─── Sub-group ───────────────────────────────────────────────── */
+    .sub-group {
+      border: 1px solid var(--grey-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .sub-group-header {
+      background: var(--accent-lt);
+      padding: 7px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sub-group-header .sub-ref {
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .sub-group-body {
+      padding: 10px 12px;
+    }
+    .sub-group-body .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+      margin-top: 8px;
+    }
+    .sub-group-body .field-label:first-child { margin-top: 0; }
+
+    /* ─── Tags ────────────────────────────────────────────────────── */
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-right: 3px;
+      margin-bottom: 3px;
+    }
+    .tag-required { background: var(--red-lt); color: var(--red); }
+    .tag-image { background: #EEF2FF; color: #4F46E5; }
+    .tag-text { background: var(--green-lt); color: var(--green); }
+    .tag-link { background: var(--blue-lt); color: var(--blue); }
+    .tag-brand { background: var(--accent-lt); color: #8A5A00; }
+    .tag-optional { background: #F3F4F6; color: var(--text-muted); }
+
+    /* ─── Inline ref chips (inside body text) ─────────────────────── */
+    .ref {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: var(--accent-lt);
+      color: var(--accent);
+      vertical-align: middle;
+    }
+
+    /* ─── Alert / Note boxes ──────────────────────────────────────── */
+    .note-box {
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 12px;
+    }
+    .note-box.warning {
+      background: #FFFBEB;
+      border-left: 3px solid #F59E0B;
+      color: #92400E;
+    }
+    .note-box.info {
+      background: var(--blue-lt);
+      border-left: 3px solid var(--blue);
+      color: #1A3F5C;
+    }
+    .note-box strong { font-weight: 700; }
+
+    /* ─── Progress summary ───────────────────────────────────────── */
+    .progress-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 36px;
+      margin-bottom: 8px;
+    }
+    .progress-card {
+      border: 1px solid var(--grey-line);
+      border-radius: var(--radius);
+      padding: 14px;
+      text-align: center;
+    }
+    .progress-card .count {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .progress-card .desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────────── */
+    .doc-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--grey-line);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ─── Print ───────────────────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .page {
+        width: 100%;
+        margin: 0;
+        padding: 28px 36px;
+        box-shadow: none;
+      }
+      .section-header { margin-top: 24px; }
+      .page-break { page-break-before: always; }
+      .input-line { border-bottom-color: #CCC; }
+      .input-area { border-color: #CCC; }
+      .file-box { border-color: #CCC; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- COVER                                                         -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-eyebrow">Website Customization</div>
+    <h1>Content &amp; Asset<br>Collection Guide</h1>
+    <p class="cover-subtitle">
+      This document is your checklist for everything we need to build your website.
+      Work through each section and provide the listed files, text, and information.
+      You do not need technical knowledge — just fill in what you have and upload the files.
+    </p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="label">Prepared For</div>
+        <div class="value">_________________________</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Project</div>
+        <div class="value">Architecture / Interior Design Website</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Version</div>
+        <div class="value">1.0 — Linked to customization-inventory.md</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- HOW TO USE                                                    -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="how-to">
+    <h3>📋 How to Use This Guide</h3>
+    <ol>
+      <li><strong>Fill in</strong> each text field with your real business information.</li>
+      <li><strong>Gather files</strong> for every item marked <span class="tag tag-image">📷 Image / File</span>.</li>
+      <li><strong>Name each file</strong> using its reference code (the orange badge, e.g. <span class="ref-example">G-005</span>) — for example: <code>G-005-logo-dark.png</code>. This lets our team and AI tools place each file in exactly the right location automatically.</li>
+      <li><strong>Send everything</strong> in one folder/drive share.</li>
+      <li>Items marked <span class="tag tag-required">Required</span> must be provided before work can begin. <span class="tag tag-optional">Optional</span> items can be added later.</li>
+    </ol>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 1 — BUSINESS IDENTITY                                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-desc">Your brand name, colors, and fonts</div>
+      <h2>Business Identity &amp; Branding</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Business Name -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-001 · G-004 · G-050</div>
+        <div class="item-title">Business / Brand Name</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Used as the website title, in the loading screen, and in the copyright footer.</p>
+        <p class="item-locations">📍 Appears in: page title, loading animation, footer copyright</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Your Business Name</div>
+        <input class="input-line" type="text" placeholder="e.g. Studio Novak Architecture">
+        <div class="provide-label">Tagline (one short sentence, optional)</div>
+        <input class="input-line" type="text" placeholder="e.g. Designing spaces that inspire">
+      </div>
+    </div>
+
+    <!-- Logo Files -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-005 · G-011 · G-012 · G-029 · G-039</div>
+        <div class="item-title">Logo Files</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-image">📷 File</span>
+        <span class="tag tag-brand">Brand Asset</span>
+        <p class="item-hint">Two versions needed: one for dark backgrounds (white/light logo) and one for light backgrounds (dark/colored logo).</p>
+        <p class="item-locations">📍 Appears in: header, footer, sidebar panel, mobile menu</p>
+      </div>
+      <div class="item-input">
+        <div class="two-col">
+          <div class="file-box required">
+            <div class="file-icon">🌑</div>
+            <div class="file-label">Dark Background Logo</div>
+            <div class="file-spec">Light/white version of your logo<br>PNG (transparent) or SVG<br>File name: <strong>G-005-logo-dark.png</strong></div>
+          </div>
+          <div class="file-box required">
+            <div class="file-icon">⬜</div>
+            <div class="file-label">Light Background Logo</div>
+            <div class="file-spec">Dark/colored version of your logo<br>PNG (transparent) or SVG<br>File name: <strong>G-012-logo-light.png</strong></div>
+          </div>
+        </div>
+        <div class="note-box info" style="margin-top:8px">
+          <strong>Tip:</strong> If you only have one logo file, send it and we will create both versions.
+        </div>
+      </div>
+    </div>
+
+    <!-- Favicon -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-003</div>
+        <div class="item-title">Website Icon (Favicon)</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-image">📷 File</span>
+        <p class="item-hint">The small icon that appears in the browser tab next to your website title.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box required">
+          <div class="file-icon">⭐</div>
+          <div class="file-label">Favicon / Browser Icon</div>
+          <div class="file-spec">PNG, square format, 512×512px ideal<br>(we will resize automatically)<br>File name: <strong>G-003-favicon.png</strong></div>
+        </div>
+        <div class="note-box info" style="margin-top:8px">
+          <strong>Tip:</strong> Usually just your logo symbol/icon without the wordmark works best at small sizes.
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand Color -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">D-001</div>
+        <div class="item-title">Primary Brand Color</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-brand">Brand Asset</span>
+        <p class="item-hint">The main accent color used for buttons, highlights, and decorative elements. Default is a warm gold (#CAA05C). If your brand has a specific color, provide the hex code.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Hex Color Code</div>
+        <input class="input-line" type="text" placeholder="e.g. #2C5F8A  —  leave blank to keep gold (#CAA05C)">
+        <div class="note-box warning" style="margin-top:4px">
+          <strong>How to find your color code:</strong> Ask your graphic designer, or use <em>imagecolorpicker.com</em> on your logo to get the exact hex value.
+        </div>
+      </div>
+    </div>
+
+    <!-- Fonts -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">D-005 · D-006</div>
+        <div class="item-title">Typography / Fonts</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-brand">Brand Asset</span>
+        <p class="item-hint">The template uses elegant fonts (Cal Sans for headings, Golos Text for body). If your brand uses specific fonts, provide the names.</p>
+      </div>
+      <div class="item-input">
+        <div class="two-col">
+          <div>
+            <div class="provide-label">Heading Font</div>
+            <input class="input-line" type="text" placeholder="e.g. Playfair Display  (or leave blank)">
+          </div>
+          <div>
+            <div class="provide-label">Body Font</div>
+            <input class="input-line" type="text" placeholder="e.g. Lato  (or leave blank)">
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:6px">Note: Only fonts available on Google Fonts are supported without additional licensing. Visit <em>fonts.google.com</em> to browse options.</p>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 2 — CONTACT INFORMATION                               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-desc">Appears in the header, sidebar, footer, and contact page — all updated at once</div>
+      <h2>Contact Information</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Phone -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-007 · G-021 · G-031 · G-042 · C-006</div>
+        <div class="item-title">Primary Phone Number</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Your main business phone number. Will be clickable (tap-to-call) on mobile.</p>
+        <p class="item-locations">📍 Appears in: header bar, sidebar, mobile menu, footer, contact page</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Phone Number (as displayed)</div>
+        <input class="input-line" type="text" placeholder="e.g. +1 (555) 234-5678">
+        <div class="provide-label">Phone Number (digits only, for link)</div>
+        <input class="input-line" type="text" placeholder="e.g. +15552345678">
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-023 · G-033 · G-044 · C-008 · CF-001</div>
+        <div class="item-title">Primary Email Address</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Your main contact email. Used for display AND as the address that receives contact form submissions.</p>
+        <p class="item-locations">📍 Appears in: sidebar, mobile menu, footer, contact page, + receives form mail</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Email Address</div>
+        <input class="input-line" type="text" placeholder="e.g. hello@yourstudio.com">
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-020 · G-030 · G-041 · C-005</div>
+        <div class="item-title">Office / Studio Address</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Your physical business address.</p>
+        <p class="item-locations">📍 Appears in: sidebar, mobile menu, footer, contact page address card</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Full Address</div>
+        <input class="input-line" type="text" placeholder="Street address, line 1">
+        <input class="input-line" type="text" placeholder="City, State / Province, Postal Code, Country">
+      </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-025 · G-026 · G-027 · G-028 · G-046–G-049</div>
+        <div class="item-title">Social Media Profiles</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-link">🔗 Links</span>
+        <p class="item-hint">Paste the full URL to each profile page. Leave blank for any platforms you don't use — those icons will be removed.</p>
+        <p class="item-locations">📍 Appears in: sidebar, mobile menu, footer</p>
+      </div>
+      <div class="item-input">
+        <div class="two-col">
+          <div>
+            <div class="provide-label"><span class="ref">G-025 · G-046</span> Facebook</div>
+            <input class="input-line" type="text" placeholder="https://facebook.com/yourstudio">
+          </div>
+          <div>
+            <div class="provide-label"><span class="ref">G-026 · G-047</span> Instagram</div>
+            <input class="input-line" type="text" placeholder="https://instagram.com/yourstudio">
+          </div>
+        </div>
+        <div class="two-col">
+          <div>
+            <div class="provide-label"><span class="ref">G-027 · G-049</span> Twitter / X</div>
+            <input class="input-line" type="text" placeholder="https://twitter.com/yourstudio  (or leave blank)">
+          </div>
+          <div>
+            <div class="provide-label"><span class="ref">G-048</span> YouTube</div>
+            <input class="input-line" type="text" placeholder="https://youtube.com/@yourstudio  (or leave blank)">
+          </div>
+        </div>
+        <div class="two-col">
+          <div>
+            <div class="provide-label"><span class="ref">G-028</span> LinkedIn</div>
+            <input class="input-line" type="text" placeholder="https://linkedin.com/company/yourstudio  (or leave blank)">
+          </div>
+          <div>
+            <div class="provide-label">Pinterest / Other</div>
+            <input class="input-line" type="text" placeholder="URL  (tell us the platform)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maps -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">C-016</div>
+        <div class="item-title">Google Maps Location</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-link">🔗 Link</span>
+        <p class="item-hint">The contact page shows an interactive map. Search your address on Google Maps and share the embed link.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Google Maps Embed URL</div>
+        <input class="input-line" type="text" placeholder="Paste the URL from Google Maps > Share > Embed a map > Copy HTML (the URL inside src=...)">
+        <div class="note-box info" style="margin-top:6px">
+          <strong>How to get this:</strong> Search your address on Google Maps → click <em>Share</em> → <em>Embed a map</em> → copy the URL inside <code>src="..."</code>.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 3 — HOMEPAGE: HERO SLIDER                             -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-desc">The large full-screen banner at the very top of your homepage</div>
+      <h2>Homepage — Hero Banner</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Slide 1 -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-001 · H-003–H-010</div>
+        <div class="item-title">Hero Slide 1</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-image">📷 Image</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">The first (and primary) hero slide. Needs a full-width background photo and a set of headlines.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box required" style="margin-bottom:10px">
+          <div class="file-icon">🖼️</div>
+          <div class="file-label">Background Photo — Slide 1</div>
+          <div class="file-spec">High-resolution interior/architecture photo. Minimum 1920×1080px (landscape).<br>File name: <strong>H-001-hero-slide-1.jpg</strong></div>
+        </div>
+        <div class="file-box" style="margin-bottom:10px">
+          <div class="file-icon">👤</div>
+          <div class="file-label">Side Thumbnail Image (optional)</div>
+          <div class="file-spec">Portrait of a project or detail shot shown alongside the hero text.<br>~400×500px<br>File name: <strong>H-010-hero-thumb-1.png</strong></div>
+        </div>
+        <div class="provide-label">Short Tagline (3–5 words, uppercase)</div>
+        <input class="input-line" type="text" placeholder="e.g. CRAFTED WITH PRECISION  (ref: H-003)">
+        <div class="provide-label">Main Headline (6–10 words)</div>
+        <input class="input-line" type="text" placeholder="e.g. The Art of Exceptional Architecture  (ref: H-004)">
+        <div class="provide-label">Supporting Sentence</div>
+        <textarea class="input-area" rows="2" placeholder="e.g. Whether it's your home, office, or commercial project, we are dedicated to bringing your vision to life.  (ref: H-005)"></textarea>
+        <div class="provide-label">Button Text</div>
+        <input class="input-line" type="text" placeholder="e.g. Book a Consultation  (ref: H-006)">
+        <div class="provide-label">Stat: Number (e.g. 120+) &amp; Label (e.g. Projects Completed)</div>
+        <div class="two-col">
+          <input class="input-line" type="text" placeholder="Number  (ref: H-007)">
+          <input class="input-line" type="text" placeholder="Label  (ref: H-008)">
+        </div>
+        <div class="provide-label">Three Services Listed (one per line)</div>
+        <textarea class="input-area" rows="2" placeholder="Architectural Design&#10;Interior Planning&#10;3D Visualisation  (ref: H-009)"></textarea>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-002 · H-011 · H-012</div>
+        <div class="item-title">Hero Slide 2</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-image">📷 Image</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">A second slide in the hero carousel. If left blank, the banner will show only one slide.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box" style="margin-bottom:10px">
+          <div class="file-icon">🖼️</div>
+          <div class="file-label">Background Photo — Slide 2</div>
+          <div class="file-spec">Different photo from slide 1. Minimum 1920×1080px.<br>File name: <strong>H-002-hero-slide-2.jpg</strong></div>
+        </div>
+        <div class="provide-label">Short Tagline (different from slide 1)</div>
+        <input class="input-line" type="text" placeholder="e.g. YOUR VISION, OUR DESIGN  (ref: H-011)">
+        <div class="provide-label">Main Headline (different from slide 1)</div>
+        <input class="input-line" type="text" placeholder="e.g. Spaces That Tell Your Story  (ref: H-012)">
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 4 — ABOUT YOUR STUDIO                                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-desc">Your founding story, background, and what sets you apart</div>
+      <h2>About Your Studio</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-028–H-037</div>
+        <div class="item-title">About Section</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-image">📷 Image</span>
+        <p class="item-hint">A section on the homepage giving a short overview of your studio: when you started, what you stand for, and what you offer.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box" style="margin-bottom:10px">
+          <div class="file-icon">🏠</div>
+          <div class="file-label">About Section Photo</div>
+          <div class="file-spec">Interior, exterior, or team photo. ~700×850px (portrait orientation).<br>File name: <strong>H-037-about-photo.jpg</strong></div>
+        </div>
+        <div class="provide-label">Founded / Established Year  <span class="ref">H-029</span></div>
+        <input class="input-line" type="text" placeholder="e.g. Started In 2009">
+        <div class="provide-label">Section Headline  <span class="ref">H-030</span></div>
+        <input class="input-line" type="text" placeholder="e.g. Where Spaces Inspire and Design Comes Alive">
+        <div class="provide-label">Four Key Differentiators (short bullet points)  <span class="ref">H-031–H-034</span></div>
+        <div class="two-col">
+          <input class="input-line" type="text" placeholder="e.g. Award-Winning Designs">
+          <input class="input-line" type="text" placeholder="e.g. 15 Years Experience">
+        </div>
+        <div class="two-col">
+          <input class="input-line" type="text" placeholder="e.g. Residential &amp; Commercial">
+          <input class="input-line" type="text" placeholder="e.g. End-to-End Project Management">
+        </div>
+        <div class="provide-label">Short paragraph (2–3 sentences about your studio)  <span class="ref">H-035</span></div>
+        <textarea class="input-area" rows="3" placeholder="e.g. Whether it's a private home or a commercial space, we bring your vision to life with precision and creativity. Our team of experienced designers works closely with each client from concept to completion."></textarea>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 5 — SERVICES                                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-desc">What you offer — shown in cards and a detailed list</div>
+      <h2>Your Services</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-013–H-052</div>
+        <div class="item-title">Services (4 primary)</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-image">📷 Images</span>
+        <p class="item-hint">The website shows your services in two places: a grid of 4 cards (top), and a numbered list of up to 5 with hover photos (below). Fill in as many as apply to your studio.</p>
+      </div>
+      <div class="item-input">
+
+        <!-- Service 1 -->
+        <div class="sub-group">
+          <div class="sub-group-header">
+            Service 1
+            <span class="sub-ref">H-016 · H-017 · H-018 · H-040 · H-041 · H-042</span>
+          </div>
+          <div class="sub-group-body">
+            <div class="field-label">Service Name</div>
+            <input class="input-line" type="text" placeholder="e.g. Architectural Design">
+            <div class="field-label">Short Description (1–2 sentences)</div>
+            <textarea class="input-area" rows="2" placeholder="e.g. From initial concept sketches to full technical drawings, we design buildings that balance beauty with function."></textarea>
+            <div class="field-label">Feature Photo (for hover panel)</div>
+            <div class="file-box">
+              <div class="file-spec">Interior or project photo ~700×480px (landscape)<br>File name: <strong>H-041-service-1-photo.jpg</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="sub-group">
+          <div class="sub-group-header">
+            Service 2
+            <span class="sub-ref">H-019 · H-020 · H-021 · H-045 · H-046</span>
+          </div>
+          <div class="sub-group-body">
+            <div class="field-label">Service Name</div>
+            <input class="input-line" type="text" placeholder="e.g. Interior Design &amp; Planning">
+            <div class="field-label">Short Description</div>
+            <textarea class="input-area" rows="2" placeholder=""></textarea>
+            <div class="field-label">Feature Photo</div>
+            <div class="file-box">
+              <div class="file-spec">~700×480px · File name: <strong>H-046-service-2-photo.jpg</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="sub-group">
+          <div class="sub-group-header">
+            Service 3
+            <span class="sub-ref">H-022 · H-023 · H-024 · H-047 · H-048</span>
+          </div>
+          <div class="sub-group-body">
+            <div class="field-label">Service Name</div>
+            <input class="input-line" type="text" placeholder="e.g. Interior Design Consultation">
+            <div class="field-label">Short Description</div>
+            <textarea class="input-area" rows="2" placeholder=""></textarea>
+            <div class="field-label">Feature Photo</div>
+            <div class="file-box">
+              <div class="file-spec">~700×480px · File name: <strong>H-048-service-3-photo.jpg</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="sub-group">
+          <div class="sub-group-header">
+            Service 4
+            <span class="sub-ref">H-025 · H-026 · H-027 · H-049 · H-050</span>
+          </div>
+          <div class="sub-group-body">
+            <div class="field-label">Service Name</div>
+            <input class="input-line" type="text" placeholder="e.g. Landscape &amp; Outdoor Design">
+            <div class="field-label">Short Description</div>
+            <textarea class="input-area" rows="2" placeholder=""></textarea>
+            <div class="field-label">Feature Photo</div>
+            <div class="file-box">
+              <div class="file-spec">~700×480px · File name: <strong>H-050-service-4-photo.jpg</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5 (optional) -->
+        <div class="sub-group">
+          <div class="sub-group-header">
+            Service 5 <span style="font-weight:400;opacity:0.7">(optional — only shown in the detailed list)</span>
+            <span class="sub-ref">H-051 · H-052</span>
+          </div>
+          <div class="sub-group-body">
+            <div class="field-label">Service Name</div>
+            <input class="input-line" type="text" placeholder="e.g. Renovation &amp; Remodeling (or leave blank to remove)">
+            <div class="field-label">Feature Photo</div>
+            <div class="file-box">
+              <div class="file-spec">~700×480px · File name: <strong>H-052-service-5-photo.jpg</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 6 — STATISTICS / KEY NUMBERS                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div>
+      <div class="section-desc">Animated counters showing your studio's achievements</div>
+      <h2>Key Statistics</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-054–H-063</div>
+        <div class="item-title">4 Counter Stats</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Four numbers that animate upward on scroll — like "22+ Years Experience". These build trust with visitors.</p>
+      </div>
+      <div class="item-input">
+        <div class="two-col">
+          <div>
+            <div class="provide-label"><span class="ref">H-054</span> Stat 1 — Number</div>
+            <input class="input-line" type="text" placeholder="e.g. 22">
+            <div class="provide-label"><span class="ref">H-055</span> Stat 1 — Label</div>
+            <input class="input-line" type="text" placeholder="e.g. Years Experience">
+            <div class="provide-label"><span class="ref">H-056</span> Stat 1 — One-line description</div>
+            <input class="input-line" type="text" placeholder="e.g. Designing award-winning spaces since 2002">
+          </div>
+          <div>
+            <div class="provide-label"><span class="ref">H-057</span> Stat 2 — Number</div>
+            <input class="input-line" type="text" placeholder="e.g. 189">
+            <div class="provide-label"><span class="ref">H-058</span> Stat 2 — Label</div>
+            <input class="input-line" type="text" placeholder="e.g. Projects Completed">
+            <div class="provide-label"><span class="ref">H-059</span> Stat 2 — Description</div>
+            <input class="input-line" type="text" placeholder="e.g. From studios to landmark buildings">
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:10px">
+          <div>
+            <div class="provide-label"><span class="ref">H-060</span> Stat 3 — Number</div>
+            <input class="input-line" type="text" placeholder="e.g. 48">
+            <div class="provide-label"><span class="ref">H-061</span> Stat 3 — Label</div>
+            <input class="input-line" type="text" placeholder="e.g. Expert Team Members">
+            <div class="provide-label"><span class="ref">H-062</span> Stat 3 — Description</div>
+            <input class="input-line" type="text" placeholder="">
+          </div>
+          <div>
+            <div class="provide-label"><span class="ref">H-062</span> Stat 4 — Number</div>
+            <input class="input-line" type="text" placeholder="e.g. 98">
+            <div class="provide-label"><span class="ref">H-063</span> Stat 4 — Label</div>
+            <input class="input-line" type="text" placeholder="e.g. % Client Satisfaction">
+            <div class="provide-label">Stat 4 — Description</div>
+            <input class="input-line" type="text" placeholder="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 7 — PORTFOLIO / PROJECTS                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div>
+      <div class="section-desc">Featured work shown in a sliding carousel on the homepage</div>
+      <h2>Portfolio Projects (5 Featured)</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-078–H-091</div>
+        <div class="item-title">5 Featured Projects</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-image">📷 Photos</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">Five project showcases for the homepage carousel. For each project provide: a photo, the project name, its type/category, and the location + year.</p>
+        <div class="note-box warning" style="margin-top:8px">
+          All 5 projects currently show "Berlin, Germany 2025" — these need unique values.
+        </div>
+      </div>
+      <div class="item-input">
+
+        <div class="sub-group">
+          <div class="sub-group-header">Project 1 <span class="sub-ref">H-078 · H-079 · H-080 · H-081 · H-082</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">Project photo ~800×600px (landscape) · File name: <strong>H-078-project-1.jpg</strong></div>
+            </div>
+            <div class="three-col">
+              <div>
+                <div class="field-label">Project Name</div>
+                <input class="input-line" type="text" placeholder="e.g. Luxury Skyline">
+              </div>
+              <div>
+                <div class="field-label">Category</div>
+                <input class="input-line" type="text" placeholder="e.g. Residential">
+              </div>
+              <div>
+                <div class="field-label">Location + Year</div>
+                <input class="input-line" type="text" placeholder="e.g. London, UK / 2024">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Project 2 <span class="sub-ref">H-083 · H-084</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">~800×600px · File name: <strong>H-083-project-2.jpg</strong></div>
+            </div>
+            <div class="three-col">
+              <div>
+                <div class="field-label">Project Name</div>
+                <input class="input-line" type="text" placeholder="">
+              </div>
+              <div>
+                <div class="field-label">Category</div>
+                <input class="input-line" type="text" placeholder="">
+              </div>
+              <div>
+                <div class="field-label">Location + Year</div>
+                <input class="input-line" type="text" placeholder="">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Project 3 <span class="sub-ref">H-085 · H-086</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">~800×600px · File name: <strong>H-085-project-3.jpg</strong></div>
+            </div>
+            <div class="three-col">
+              <div><div class="field-label">Project Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Category</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Location + Year</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Project 4 <span class="sub-ref">H-087 · H-088</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">~800×600px · File name: <strong>H-087-project-4.jpg</strong></div>
+            </div>
+            <div class="three-col">
+              <div><div class="field-label">Project Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Category</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Location + Year</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Project 5 <span class="sub-ref">H-089 · H-090</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">~800×600px · File name: <strong>H-089-project-5.jpg</strong></div>
+            </div>
+            <div class="three-col">
+              <div><div class="field-label">Project Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Category</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Location + Year</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-box info" style="margin-top:8px">
+          The homepage gallery strip (below the carousel) also uses project photos. File names: <strong>H-140-gallery-1.jpg</strong> through <strong>H-147-gallery-8.jpg</strong>. You can send the same project photos — we will select the best 8.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 8 — TEAM MEMBERS                                      -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div>
+      <div class="section-desc">The people behind your studio</div>
+      <h2>Team Members (5 Featured)</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-115–H-126</div>
+        <div class="item-title">5 Team Members</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-image">📷 Portraits</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">For each team member, provide their name, job title, and a professional portrait photo. The homepage shows 5 members.</p>
+        <div class="note-box warning" style="margin-top:8px">
+          All 5 currently have the same job title "Exhibition designer" — each needs a unique role.
+        </div>
+      </div>
+      <div class="item-input">
+
+        <div class="sub-group">
+          <div class="sub-group-header">Member 1 (featured — shown largest) <span class="sub-ref">H-114 · H-115 · H-116 · H-117</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px">
+              <div class="file-spec">Professional portrait photo, ~480×600px (portrait orientation)<br>File name: <strong>H-117-team-1.jpg</strong></div>
+            </div>
+            <div class="two-col">
+              <div><div class="field-label">Full Name</div><input class="input-line" type="text" placeholder="e.g. Sarah Mitchell"></div>
+              <div><div class="field-label">Job Title / Role</div><input class="input-line" type="text" placeholder="e.g. Principal Architect"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Member 2 <span class="sub-ref">H-118 · H-119 · H-120</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px"><div class="file-spec">~480×600px · File name: <strong>H-120-team-2.jpg</strong></div></div>
+            <div class="two-col">
+              <div><div class="field-label">Full Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Job Title / Role</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Member 3 <span class="sub-ref">H-121 · H-122</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px"><div class="file-spec">~480×600px · File name: <strong>H-122-team-3.jpg</strong></div></div>
+            <div class="two-col">
+              <div><div class="field-label">Full Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Job Title / Role</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Member 4 <span class="sub-ref">H-123 · H-124</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px"><div class="file-spec">~480×600px · File name: <strong>H-124-team-4.jpg</strong></div></div>
+            <div class="two-col">
+              <div><div class="field-label">Full Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Job Title / Role</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-group">
+          <div class="sub-group-header">Member 5 <span class="sub-ref">H-125 · H-126</span></div>
+          <div class="sub-group-body">
+            <div class="file-box" style="margin-bottom:8px"><div class="file-spec">~480×600px · File name: <strong>H-126-team-5.jpg</strong></div></div>
+            <div class="two-col">
+              <div><div class="field-label">Full Name</div><input class="input-line" type="text" placeholder=""></div>
+              <div><div class="field-label">Job Title / Role</div><input class="input-line" type="text" placeholder=""></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 9 — TESTIMONIALS                                      -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div>
+      <div class="section-desc">What your clients say about working with you</div>
+      <h2>Client Testimonials</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-092–H-101</div>
+        <div class="item-title">Testimonials</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-image">📷 Photos</span>
+        <p class="item-hint">Real quotes from happy clients, with their name, company/role, and optional photo. Even one strong testimonial is enough.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box" style="margin-bottom:10px">
+          <div class="file-icon">🏡</div>
+          <div class="file-label">Testimonial Section Photo  <span class="ref">H-094</span></div>
+          <div class="file-spec">A project interior or atmosphere photo shown beside the testimonials.<br>~600×700px (portrait) · File name: <strong>H-094-testi-section.jpg</strong></div>
+        </div>
+
+        <div class="provide-label"><span class="ref">H-095</span> Overall Rating (e.g. 4.9)</div>
+        <input class="input-line" type="text" placeholder="e.g. 4.9  (or leave blank to remove)">
+
+        <div class="provide-label"><span class="ref">H-097</span> Featured Pull Quote (your best short testimonial snippet)</div>
+        <textarea class="input-area" rows="2" placeholder="e.g. The team turned our vision into a stunning, livable space. We couldn't be happier."></textarea>
+
+        <div class="sub-group" style="margin-top:10px">
+          <div class="sub-group-header">Testimonial 1 <span class="sub-ref">H-098 · H-099 · H-100 · H-101</span></div>
+          <div class="sub-group-body">
+            <div class="field-label">Full Testimonial Quote (include opening/closing quotes)</div>
+            <textarea class="input-area" rows="2" placeholder='"A wonderful experience! The team was knowledgeable, professional, and delivered beyond our expectations."'></textarea>
+            <div class="two-col" style="margin-top:8px">
+              <div><div class="field-label">Client Name</div><input class="input-line" type="text" placeholder="e.g. James Morrison"></div>
+              <div><div class="field-label">Title / Company</div><input class="input-line" type="text" placeholder="e.g. Homeowner / CEO, Apex Ltd."></div>
+            </div>
+            <div class="field-box" style="margin-top:8px">
+              <div class="file-box">
+                <div class="file-spec">Client headshot (optional) ~120×120px, square<br>File name: <strong>H-101-testi-1-avatar.jpg</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 10 — VIDEO                                            -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <div class="section-desc">A play-button section linking to a brand or project video</div>
+      <h2>Studio Video</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-127–H-130</div>
+        <div class="item-title">Video Section</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-link">🔗 Video URL</span>
+        <span class="tag tag-image">📷 Background</span>
+        <p class="item-hint">A cinematic section with a play button that opens a YouTube or Vimeo video. If you do not have a video, this section can be removed.</p>
+      </div>
+      <div class="item-input">
+        <div class="file-box" style="margin-bottom:10px">
+          <div class="file-icon">🎬</div>
+          <div class="file-label">Video Background Photo  <span class="ref">H-127</span></div>
+          <div class="file-spec">A dramatic full-width project or studio photo (the play button sits over it).<br>Minimum 1920×1080px · File name: <strong>H-127-video-bg.jpg</strong></div>
+        </div>
+        <div class="provide-label"><span class="ref">H-128</span> YouTube or Vimeo Video URL</div>
+        <input class="input-line" type="text" placeholder="e.g. https://youtu.be/XXXXXXXXXXX  (or leave blank to remove section)">
+        <div class="provide-label"><span class="ref">H-129</span> Video Headline</div>
+        <input class="input-line" type="text" placeholder="e.g. Unlock Your Dream Home Today!">
+        <div class="provide-label"><span class="ref">H-130</span> Supporting Sentence</div>
+        <input class="input-line" type="text" placeholder="e.g. Watch how we transform spaces from concept to completion.">
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 11 — PARTNERS & SPONSORS                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div>
+      <div class="section-desc">Client logos or partner / supplier brands shown in a scrolling strip</div>
+      <h2>Partners &amp; Client Logos</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-102–H-108</div>
+        <div class="item-title">Up to 6 Partner / Client Logos</div>
+        <span class="tag tag-optional">Optional</span>
+        <span class="tag tag-image">📷 Logos</span>
+        <p class="item-hint">Logos of clients you have worked with, or industry partners / associations you belong to. These appear in a scrolling banner strip.</p>
+      </div>
+      <div class="item-input">
+        <div class="note-box info" style="margin-bottom:10px">
+          <strong>File naming:</strong> Name logo files <strong>H-103-partner-1.png</strong> through <strong>H-108-partner-6.png</strong>. Provide fewer than 6 if needed — unused slots will be removed.
+        </div>
+        <div class="three-col">
+          <div class="file-box"><div class="file-spec">Partner 1<br><strong>H-103-partner-1.png</strong><br>PNG, transparent bg<br>~200×80px</div></div>
+          <div class="file-box"><div class="file-spec">Partner 2<br><strong>H-104-partner-2.png</strong></div></div>
+          <div class="file-box"><div class="file-spec">Partner 3<br><strong>H-105-partner-3.png</strong></div></div>
+        </div>
+        <div class="three-col" style="margin-top:8px">
+          <div class="file-box"><div class="file-spec">Partner 4<br><strong>H-106-partner-4.png</strong></div></div>
+          <div class="file-box"><div class="file-spec">Partner 5<br><strong>H-107-partner-5.png</strong></div></div>
+          <div class="file-box"><div class="file-spec">Partner 6<br><strong>H-108-partner-6.png</strong></div></div>
+        </div>
+        <div class="provide-label" style="margin-top:10px"><span class="ref">H-102</span> Strip Label Text</div>
+        <input class="input-line" type="text" placeholder="e.g. Trusted by 50,000+ happy clients  (or leave blank to keep default)">
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 12 — PROCESS STEPS                                    -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div>
+      <div class="section-desc">Your step-by-step workflow shown in a 4-step timeline</div>
+      <h2>How You Work (Process Steps)</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">H-064–H-075</div>
+        <div class="item-title">4 Process Steps</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-image">📷 Images</span>
+        <p class="item-hint">Explains your design process to potential clients. Each step needs a title, a 1–2 sentence description, and an optional photo.</p>
+      </div>
+      <div class="item-input">
+        <div class="two-col">
+          <div>
+            <div class="sub-group">
+              <div class="sub-group-header">Step 1 <span class="sub-ref">H-067 · H-068 · H-069</span></div>
+              <div class="sub-group-body">
+                <div class="field-label">Title</div>
+                <input class="input-line" type="text" placeholder="e.g. Initial Consultation">
+                <div class="field-label">Description (1–2 sentences)</div>
+                <textarea class="input-area" rows="3" placeholder="e.g. We meet to understand your vision, preferences, and budget — in person or virtually."></textarea>
+                <div class="field-label">Photo</div>
+                <div class="file-box"><div class="file-spec">~280×280px<br><strong>H-068-process-1.jpg</strong></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-group">
+              <div class="sub-group-header">Step 2 <span class="sub-ref">H-070 · H-071 · H-072</span></div>
+              <div class="sub-group-body">
+                <div class="field-label">Title</div>
+                <input class="input-line" type="text" placeholder="e.g. Design &amp; Planning">
+                <div class="field-label">Description</div>
+                <textarea class="input-area" rows="3" placeholder=""></textarea>
+                <div class="field-label">Photo</div>
+                <div class="file-box"><div class="file-spec">~280×280px<br><strong>H-071-process-2.jpg</strong></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:10px">
+          <div>
+            <div class="sub-group">
+              <div class="sub-group-header">Step 3 <span class="sub-ref">H-073</span></div>
+              <div class="sub-group-body">
+                <div class="field-label">Title</div>
+                <input class="input-line" type="text" placeholder="e.g. Implementation">
+                <div class="field-label">Description</div>
+                <textarea class="input-area" rows="3" placeholder=""></textarea>
+                <div class="field-label">Photo</div>
+                <div class="file-box"><div class="file-spec"><strong>H-073-process-3.jpg</strong></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-group">
+              <div class="sub-group-header">Step 4 <span class="sub-ref">H-074</span></div>
+              <div class="sub-group-body">
+                <div class="field-label">Title</div>
+                <input class="input-line" type="text" placeholder="e.g. Project Handover">
+                <div class="field-label">Description</div>
+                <textarea class="input-area" rows="3" placeholder=""></textarea>
+                <div class="field-label">Photo</div>
+                <div class="file-box"><div class="file-spec"><strong>H-074-process-4.jpg</strong></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 13 — WEBSITE CONFIGURATION                            -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div>
+      <div class="section-desc">Technical setup — domain, analytics, and deployment settings</div>
+      <h2>Website Configuration</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-001 · G-002</div>
+        <div class="item-title">Page Titles &amp; SEO Description</div>
+        <span class="tag tag-required">Required</span>
+        <span class="tag tag-text">Text</span>
+        <p class="item-hint">The title shown in search results (Google) and the short description below it. Keep the title under 60 characters and description under 155 characters.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Homepage Title (shown in Google search results)</div>
+        <input class="input-line" type="text" placeholder="e.g. Studio Novak — Architecture &amp; Interior Design in London  (max 60 characters)">
+        <div class="provide-label">Homepage Description (shown under title in Google)</div>
+        <textarea class="input-area" rows="2" placeholder="e.g. Award-winning architecture and interior design studio based in London. Residential, commercial, and hospitality projects. Book a free consultation.  (max 155 characters)"></textarea>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">CF-002</div>
+        <div class="item-title">Google Analytics</div>
+        <span class="tag tag-optional">Optional</span>
+        <p class="item-hint">If you have a Google Analytics account, provide your Measurement ID so we can add website tracking. Format: G-XXXXXXXXXX.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Google Analytics Measurement ID</div>
+        <input class="input-line" type="text" placeholder="e.g. G-A1B2C3D4E5  (leave blank if you don't have one)">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">CF-001</div>
+        <div class="item-title">Contact Form — Receiving Email</div>
+        <span class="tag tag-required">Required</span>
+        <p class="item-hint">The email address that receives all messages submitted through the Contact page form. Can be the same as your main contact email, or a dedicated inbox.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Form Submission Recipient Email</div>
+        <input class="input-line" type="text" placeholder="e.g. enquiries@yourstudio.com">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">CF-005</div>
+        <div class="item-title">Deployment / Hosting</div>
+        <span class="tag tag-optional">Optional</span>
+        <p class="item-hint">Where will the website be hosted? This helps us configure the files correctly before delivery.</p>
+      </div>
+      <div class="item-input">
+        <div class="provide-label">Domain Name</div>
+        <input class="input-line" type="text" placeholder="e.g. www.studionovak.com">
+        <div class="provide-label">Hosting Platform</div>
+        <input class="input-line" type="text" placeholder="e.g. Netlify, Vercel, GitHub Pages, cPanel hosting, etc.">
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 14 — ADDITIONAL PAGES                                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <div>
+      <div class="section-desc">Select which pages you want included in the final website</div>
+      <h2>Pages Included in Your Site</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-label">
+        <div class="item-ref">G-051–G-056</div>
+        <div class="item-title">Active Pages Checklist</div>
+        <span class="tag tag-required">Required</span>
+        <p class="item-hint">The template includes many page types. Select only the ones you need — unused pages will be removed from the navigation.</p>
+      </div>
+      <div class="item-input">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked disabled> Home (required)</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Services page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> About Us page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Portfolio / Projects page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Team page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Blog / News</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Gallery page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked disabled> Contact page (required)</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> FAQ page</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Pricing page</label>
+        </div>
+        <div class="provide-label" style="margin-top:12px">Any other notes about specific pages?</div>
+        <textarea class="input-area" rows="2" placeholder="e.g. We want a dedicated 'Residential' page and a 'Commercial' page instead of a combined portfolio"></textarea>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PROGRESS SUMMARY                                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="progress-summary">
+    <div class="progress-card">
+      <div class="count">14</div>
+      <div class="desc">Sections to complete</div>
+    </div>
+    <div class="progress-card">
+      <div class="count">20+</div>
+      <div class="desc">Images / files to provide</div>
+    </div>
+    <div class="progress-card">
+      <div class="count">30+</div>
+      <div class="desc">Text fields to fill in</div>
+    </div>
+    <div class="progress-card">
+      <div class="count">250+</div>
+      <div class="desc">Items auto-mapped to inventory</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                        -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="doc-footer">
+    <div>
+      📎 All reference codes (e.g. <span class="ref">G-005</span>) map directly to
+      <strong>static-site-ai-system/context/customization-inventory.md</strong>
+    </div>
+    <div>Antra Template — Client Intake Guide v1.0</div>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>

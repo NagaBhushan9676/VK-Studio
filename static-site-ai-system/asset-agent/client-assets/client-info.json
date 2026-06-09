@@ -1,0 +1,22 @@
+{
+  "businessName": "VK Interior Studio",
+  "legalName": "VK Interior Studio",
+  "tagline": "Client to choose; see suggestions in context file",
+  "yearEstablished": 2026,
+  "contact": {
+    "phone": "+91 9182553924",
+    "whatsapp": "+91 9182553924",
+    "email": "hello@vkinteriorstudio.in",
+    "supportEmail": "hello@vkinteriorstudio.in",
+    "address": "Nallagandla, Lingampalli, Hyderabad",
+    "city": "Hyderabad",
+    "state": "",
+    "postcode": "",
+    "country": "India",
+    "hours": "09:00-18:00"
+  },
+  "social": {
+    "instagram": "https://instagram.com/vk_interior_studio"
+  },
+  "notes": "Client provided basic contact and social info. Tagline suggestions added in MD file."
+}

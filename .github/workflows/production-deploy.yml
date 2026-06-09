@@ -1,0 +1,200 @@
+name: Production Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Deployment target'
+        required: true
+        default: 'github-pages'
+        type: choice
+        options:
+          - github-pages
+          - netlify
+          - custom
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "production-deploy"
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Pre-Deploy Validation
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: antra/package.json
+
+      - name: Install dependencies
+        working-directory: antra
+        run: npm ci
+
+      - name: Compile SCSS (production — compressed, no source maps)
+        working-directory: antra
+        run: npx sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map
+
+      - name: Verify CSS output
+        run: |
+          if [ ! -f "antra/assets/css/main.css" ]; then
+            echo "::error::main.css was not generated — SCSS compilation failed"
+            exit 1
+          fi
+          CSS_SIZE=$(wc -c < antra/assets/css/main.css)
+          echo "Production CSS size: ${CSS_SIZE} bytes"
+          if [ "$CSS_SIZE" -lt 1000 ]; then
+            echo "::error::main.css is suspiciously small — compilation may have failed silently"
+            exit 1
+          fi
+          echo "✅ Production CSS: ${CSS_SIZE} bytes"
+
+      - name: Critical placeholder check
+        run: |
+          REPLACE_ME=$(grep -rni "REPLACE-ME" antra/ --include="*.html" | grep -v "<!--" || true)
+          if [ -n "$REPLACE_ME" ]; then
+            echo "::warning::Placeholder images (REPLACE-ME) found — site will have broken images in production:"
+            echo "$REPLACE_ME"
+          fi
+
+          LOREM=$(grep -rni "lorem ipsum" antra/ --include="*.html" | grep -v "<!--" || true)
+          if [ -n "$LOREM" ]; then
+            echo "::warning::Lorem ipsum text found — review before launch:"
+            echo "$LOREM"
+          fi
+
+          # Only fail on contact info that looks clearly like a placeholder
+          PLACEHOLDER_EMAIL=$(grep -rni "youremail@example\|info@example\.com\|contact@example\.com" antra/ --include="*.html" | grep -v "<!--" || true)
+          if [ -n "$PLACEHOLDER_EMAIL" ]; then
+            echo "::warning::Example email addresses found — update to real contact details:"
+            echo "$PLACEHOLDER_EMAIL"
+          fi
+
+      - name: Validate required structure
+        run: |
+          # GSAP ScrollSmoother wrapper
+          MISSING_WRAPPER=""
+          for file in antra/*.html; do
+            if ! grep -q "antra-smooth-wrapper" "$file" || ! grep -q "antra-smooth-content" "$file"; then
+              MISSING_WRAPPER="${MISSING_WRAPPER}\n  - ${file}"
+            fi
+          done
+          if [ -n "$MISSING_WRAPPER" ]; then
+            echo "::error::GSAP ScrollSmoother wrapper missing — site will be broken:"
+            echo -e "$MISSING_WRAPPER"
+            exit 1
+          fi
+
+          # Required vendor files
+          REQUIRED_JS=(
+            "antra/assets/js/vendor/jquery-3.7.1.min.js"
+            "antra/assets/js/vendor/gsap.min.js"
+            "antra/assets/js/vendor/ScrollSmoother.min.js"
+            "antra/assets/js/vendor/swiper.min.js"
+            "antra/assets/js/main.js"
+          )
+          for jsfile in "${REQUIRED_JS[@]}"; do
+            if [ ! -f "$jsfile" ]; then
+              echo "::error::Required vendor file missing: ${jsfile}"
+              exit 1
+            fi
+          done
+          echo "✅ All structural validation checks passed"
+
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    needs: validate
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'github-pages')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: antra/package.json
+
+      - name: Install dependencies
+        working-directory: antra
+        run: npm ci
+
+      - name: Compile SCSS (production)
+        working-directory: antra
+        run: npx sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map
+
+      - name: Ensure .nojekyll exists
+        run: touch antra/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: antra/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-netlify:
+    runs-on: ubuntu-latest
+    name: Deploy to Netlify
+    needs: validate
+    if: >
+      github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'netlify'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: antra/package.json
+
+      - name: Install dependencies
+        working-directory: antra
+        run: npm ci
+
+      - name: Compile SCSS (production)
+        working-directory: antra
+        run: npx sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: './antra'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Production deploy from ${{ github.sha }}"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

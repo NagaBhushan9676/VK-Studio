@@ -1,0 +1,9 @@
+[build]
+  base = "antra"
+  command = "npx sass assets/scss/main.scss:assets/css/main.css --style=compressed"
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

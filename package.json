@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "replace:demo-images-source": "node static-site-ai-system/asset-agent/scripts/replace-demo-images-source-level.js --apply",
+    "restore:template-images-source": "node static-site-ai-system/asset-agent/scripts/restore-template-image-paths.js --apply"
+  },
+  "devDependencies": {
+    "glob": "^13.0.6"
+  }
+}
