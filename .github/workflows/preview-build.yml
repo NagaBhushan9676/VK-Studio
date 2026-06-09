@@ -102,11 +102,11 @@ jobs:
       - name: Check required vendor JS files
         run: |
           REQUIRED_JS=(
-            "antra/assets/js/vendor/jquery-3.7.1.min.js"
-            "antra/assets/js/vendor/bootstrap.bundle.min.js"
+            "antra/assets/js/vendor/jquary-3.7.1.min.js"
+            "antra/assets/js/vendor/bootstrap-bundle.js"
             "antra/assets/js/vendor/gsap.min.js"
-            "antra/assets/js/vendor/ScrollTrigger.min.js"
-            "antra/assets/js/vendor/ScrollSmoother.min.js"
+            "antra/assets/js/vendor/scroll-trigger.min.js"
+            "antra/assets/js/vendor/scroll-smoother.js"
             "antra/assets/js/vendor/swiper.min.js"
             "antra/assets/js/main.js"
           )

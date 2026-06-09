@@ -101,9 +101,9 @@ jobs:
 
           # Required vendor files
           REQUIRED_JS=(
-            "antra/assets/js/vendor/jquery-3.7.1.min.js"
+            "antra/assets/js/vendor/jquary-3.7.1.min.js"
             "antra/assets/js/vendor/gsap.min.js"
-            "antra/assets/js/vendor/ScrollSmoother.min.js"
+            "antra/assets/js/vendor/scroll-smoother.js"
             "antra/assets/js/vendor/swiper.min.js"
             "antra/assets/js/main.js"
           )
