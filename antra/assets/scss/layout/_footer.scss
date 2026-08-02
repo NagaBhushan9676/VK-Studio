@@ -213,26 +213,31 @@ START: Footer CSS
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
     @include breakpoint(sm){
         bottom: 0;
     }
     span{
         font-family: var(--tl-ff-heading);
-        font-size: 150px;
+        font-size: 70px;
+        white-space: nowrap;
         background: linear-gradient(179.69deg, #FFFAF2 0.27%, rgba(255, 251, 244, 0) 90.85%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         opacity: 0.34;
         line-height: 1;
+        display: inline-block;
         @include breakpoint(lg){
-            font-size: 120px;
+            font-size: 55px;
         }
         @include breakpoint(md){
-            font-size: 85px;
+            font-size: 45px;
         }
         @include breakpoint(sm){
-            font-size: 32px;
+            font-size: 26px;
         }
     }
 }
