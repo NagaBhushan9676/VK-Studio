@@ -66,8 +66,8 @@ START: Footer CSS
         .footer-logo{
             max-width: 100%;
             img {
-                width: 100%;
-                max-width: 350px;
+                width: auto;
+                max-width: 100%;
                 height: auto;
                 display: block;
             }
