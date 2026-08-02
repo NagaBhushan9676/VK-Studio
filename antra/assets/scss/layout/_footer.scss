@@ -64,12 +64,10 @@ START: Footer CSS
     .widget-header {
         margin-bottom: 30px;
         .footer-logo{
-            max-width: 100%;
+            max-width: 150px;
             img {
                 width: auto;
-                max-width: 100%;
                 height: auto;
-                display: block;
             }
         }
         .widget-title{
