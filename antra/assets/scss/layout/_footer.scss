@@ -7,12 +7,12 @@ START: Footer CSS
     position: relative;
     z-index: 1;
     overflow-x: clip;
-    padding-bottom: 180px;
+    padding-bottom: 60px;
     @include breakpoint(md){
-        padding-bottom: 120px;
+        padding-bottom: 45px;
     }
     @include breakpoint(sm){
-        padding-bottom: 70px;
+        padding-bottom: 30px;
     }
     .footer-bg{
         @include background;
@@ -48,9 +48,9 @@ START: Footer CSS
     }
 }
 .footer-wrap{
-    padding: 90px 0 60px 0;
+    padding: 50px 0 30px 0;
     @include breakpoint(md){
-        padding: 60px 0 0 0;
+        padding: 40px 0 0 0;
     }
 }
 
@@ -209,7 +209,7 @@ START: Footer CSS
 
 .footer-text{
     position: absolute;
-    bottom: -22px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
@@ -217,7 +217,7 @@ START: Footer CSS
     text-align: center;
     overflow: hidden;
     @include breakpoint(sm){
-        bottom: 0;
+        bottom: 12px;
     }
     span{
         font-family: var(--tl-ff-heading);
